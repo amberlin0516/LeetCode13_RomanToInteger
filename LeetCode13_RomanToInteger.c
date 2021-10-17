@@ -25,11 +25,8 @@ int romanToInt(char * s){
     //strSize
     i = 0;
     while(s[i] != '\0')
-    {
-        n_size++;
         i++;
-    }
-    
+    n_size = i;
     sum = transINT(*(s+n_size-1)); 
     //the rightest element n[n_size-1] must be added in sum
     //if sum = 0, it would be out of bound in forloop
