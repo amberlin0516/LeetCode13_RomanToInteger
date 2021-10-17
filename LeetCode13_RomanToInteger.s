@@ -61,7 +61,7 @@ PreLessthanCur:
     bne   t0, x0, Loop  #if i != 0, go to [Loop]
     add   ra, s7, x0
     ret #return to line 25. return value is a3
-transInt: #return = a2 #t1 = temp
+transInt: #return = a2 / t1 = temp
     add   t5, ra, x0
     addi  t1, x0, 73 #I = 73
     beq   s1, t1, I
