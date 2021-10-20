@@ -23,7 +23,7 @@ romantoInt:
     #so i use s7 store return address of line 25.
     jal   s7, Compare 
     add   ra, t6, x0
-    ret
+    jalr  ra
 strSize:
     addi  t0, t0, 0  #initialize i, t0 = i = 0
  for:
@@ -33,7 +33,7 @@ strSize:
     addi  t0, t0, 1 #n_size++
     jal   x0, for
  zero:
-    ret #return value is t0. return to line 21.
+    jalr  ra #return value is t0. return to line 21.
 Compare: 
     #t2 = cur / t3 = pre / t0 = i / sum = a3
     #do sum = transINT(s[n_size-1]);
@@ -54,13 +54,13 @@ Loop:
     addi  t2, t3, 0     #cur = pre
     bne   t0, x0, Loop  #if i != 0, go to [Loop]
     add   ra, s7, x0
-    ret #return to line 25. return value is a3
+    jalr  ra #return to line 25. return value is a3
 PreLessthanCur:
     sub   a3, a3, t3    #if pre < cur,sum -= pre;
     addi  t2, t3, 0     #cur = pre
     bne   t0, x0, Loop  #if i != 0, go to [Loop]
     add   ra, s7, x0
-    ret #return to line 25. return value is a3
+    jalr  ra #return to line 25. return value is a3
 transInt: #return = a2 / t1 = temp
     add   t5, ra, x0
     addi  t1, x0, 73 #I = 73
@@ -77,22 +77,22 @@ transInt: #return = a2 / t1 = temp
     beq   s1, t1, D
  M: addi  a2, x0, 1000 #else M
     add   ra, t5, x0
-    ret #return value is a2. return to line 43 or 51. 
+    jalr  ra #return value is a2. return to line 43 or 51. 
  I: addi  a2, x0, 1
     add   ra, t5, x0
-    ret #return value is a2. return to line 43 or 51. 
+    jalr  ra #return value is a2. return to line 43 or 51. 
  V: addi  a2, x0, 5
     add   ra, t5, x0
-    ret #return value is a2. return to line 43 or 51. 
+    jalr  ra #return value is a2. return to line 43 or 51. 
  X: addi  a2, x0, 10
     add   ra, t5, x0
-    ret #return value is a2. return to line 43 or 51. 
+    jalr  ra #return value is a2. return to line 43 or 51. 
  L: addi  a2, x0, 50
     add   ra, t5, x0
-    ret #return value is a2. return to line 43 or 51. 
+    jalr  ra #return value is a2. return to line 43 or 51. 
  C: addi  a2, x0, 100
     add   ra, t5, x0
     ret #return value is a2. return to line 43 or 51. 
  D: addi  a2, x0, 500
     add   ra, t5, x0
-    ret #return value is a2. return to line 43 or 51. 
+    jalr  ra #return value is a2. return to line 43 or 51. 
