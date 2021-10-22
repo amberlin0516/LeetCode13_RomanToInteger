@@ -62,7 +62,6 @@ PreLessthanCur:
     add   ra, s7, x0
     jalr  ra #return to line 25. return value is a3
 transInt: #return = a2 / t1 = temp
-    add   t5, ra, x0
     addi  t1, x0, 73 #I = 73
     beq   s1, t1, I
     addi  t1, x0, 86 #V = 86
@@ -76,23 +75,16 @@ transInt: #return = a2 / t1 = temp
     addi  t1, x0, 68 #D = 68
     beq   s1, t1, D
  M: addi  a2, x0, 1000 #else M
-    add   ra, t5, x0
     jalr  ra #return value is a2. return to line 43 or 51. 
  I: addi  a2, x0, 1
-    add   ra, t5, x0
     jalr  ra #return value is a2. return to line 43 or 51. 
  V: addi  a2, x0, 5
-    add   ra, t5, x0
     jalr  ra #return value is a2. return to line 43 or 51. 
  X: addi  a2, x0, 10
-    add   ra, t5, x0
     jalr  ra #return value is a2. return to line 43 or 51. 
  L: addi  a2, x0, 50
-    add   ra, t5, x0
     jalr  ra #return value is a2. return to line 43 or 51. 
  C: addi  a2, x0, 100
-    add   ra, t5, x0
-    ret #return value is a2. return to line 43 or 51. 
+    jalr  ra #return value is a2. return to line 43 or 51. 
  D: addi  a2, x0, 500
-    add   ra, t5, x0
     jalr  ra #return value is a2. return to line 43 or 51. 
