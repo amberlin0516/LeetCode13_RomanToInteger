@@ -62,7 +62,8 @@ PreLessthanCur:
     sub   a3, a3, t3    #if pre < cur,sum -= pre;
     addi  t2, t3, 0     #cur = pre
     bne   t0, x0, Loop  #if i != 0, go to [Loop]
-    add   ra, s7, x0
+    lw    ra, 0(sp)     #load ra from stack
+    addi  sp, sp, 4     #restore stack
     jalr  ra #return value is a3, return to line 25. 
 transInt: #return = a2 / t1 = temp
     addi  t1, x0, 73 #I = 73
